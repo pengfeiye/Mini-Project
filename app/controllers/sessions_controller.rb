@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     if @user
       login(@user)
       flash[:success] = "Successfully logged in."      # <--- Add this flash notice
-      redirect_to show_user_path(@user[:id])
+      # redirect_to show_user_path(@user[:id])
+      redirect_to hero_index_path
     else
       redirect_to login_path
     end

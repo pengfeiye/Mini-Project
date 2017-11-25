@@ -1,0 +1,23 @@
+body {
+	background-color: skyblue;
+}
+
+h1 {
+	font-family: 'Oregano', cursive;
+	text-align: center;
+	font-size: 70px;
+}
+
+#homepage-container {
+	margin: 10px 10% 0 10%;
+}
+
+#game-box {
+	height: 60vh;
+	background-color: lightgrey;
+	overflow-y: scroll;
+}
+
+#game-content {
+
+}

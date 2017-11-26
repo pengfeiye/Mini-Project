@@ -21,5 +21,9 @@ class HerosController < ApplicationController
 
 	def show
 		@hero = current_user.hero
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 end

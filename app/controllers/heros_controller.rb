@@ -21,6 +21,8 @@ class HerosController < ApplicationController
 	end
 
 	def show
+		set_user
+		puts "kkk"
 		@hero = current_user.hero
 		respond_to :js, :html
 		# respond_to do |f|
@@ -28,4 +30,17 @@ class HerosController < ApplicationController
 	 #    f.html
 	 #  end
 	end
+	private
+	def set_user
+		cookies.delete :user
+    cookies[:user_id] = current_user.id
+		cookies[:hero_atk] = current_user.hero.atk
+		cookies[:hero_def] = current_user.hero.def
+		cookies[:hero_agi] = current_user.hero.agi
+		cookies[:hero_luk] = current_user.hero.luk
+		cookies[:hero_wis] = current_user.hero.wis
+		cookies[:hero_exp] = current_user.hero.exp
+		cookies[:hero_lvl] = current_user.hero.level
+
+  end
 end

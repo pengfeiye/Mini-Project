@@ -20,3 +20,4 @@ $(document).ready(function(){
     $('#game-box').scrollTop($('#game-box')[0].scrollHeight);
   })
 });
+

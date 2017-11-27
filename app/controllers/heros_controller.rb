@@ -1,5 +1,4 @@
 class HerosController < ApplicationController
-	require "json"
 
 	def index
 		if current_user.hero != nil
@@ -25,10 +24,11 @@ class HerosController < ApplicationController
 		set_user
 		puts "kkk"
 		@hero = current_user.hero
-		respond_to do |format|
-			format.html
-			format.js
-		end
+		respond_to :js, :html
+		# respond_to do |f|
+	 #    f.js { render :content_type => 'text/javascript' }
+	 #    f.html
+	 #  end
 	end
 	private
 	def set_user

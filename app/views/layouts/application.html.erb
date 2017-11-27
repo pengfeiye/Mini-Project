@@ -23,15 +23,21 @@
   <div id="homepage-container">
 	<h1>World of Wordcraft</h1>
 	<hr>
-	<% flash.each do |name, msg| %>
-		<% if name == "success" %>
-		  <p class="alert alert-success">
-	  <% else %>
-		  <p class="alert alert-error">
-	  <% end %>
-	    <strong> <%= name.capitalize %>: <%= msg %> </strong>
-	  </p>
-	<% end %>
+  <% flash.each do |name, msg| %>
+    <% if name == "success" %>
+      <p class="alert alert-success">
+    <% else %>
+      <p class="alert alert-error">
+    <% end %>
+      <strong> <%= name.capitalize %>: <%= msg %> </strong>
+    </p>
+  <% end %>
+  <% if !@current_user %>
+    <%= link_to "sign up", signup_path, class: "btn btn-primary" %>
+    <%= link_to "log in", login_path, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to "log out", logout_path, class: "btn btn-primary", method: "delete" %>
+  <% end %>
 	
     <%= yield %>
 </div>

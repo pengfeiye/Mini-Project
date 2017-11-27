@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 	get "/playground", to: "heros#show", as: "playground"
 	get "/new_hero", to: "heros#new", as: "new_hero"
 	post "/new_hero", to: "heros#create"
+	put "/hero/:id", to: "heros#update", as: "update_hero"
 end

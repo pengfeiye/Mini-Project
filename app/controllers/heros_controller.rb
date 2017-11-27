@@ -30,10 +30,20 @@ class HerosController < ApplicationController
 	 #    f.html
 	 #  end
 	end
+
+	def update
+		puts "heroupdateeee"
+		puts params
+		@hero = Hero.find(params[:id])
+		if @hero.update(hero_params)
+			set_user
+		end
+	end
+
 	private
 	def set_user
 		cookies.delete :user
-    cookies[:user_id] = current_user.id
+    cookies[:hero_id] = current_user.hero.id
 		cookies[:hero_atk] = current_user.hero.atk
 		cookies[:hero_def] = current_user.hero.def
 		cookies[:hero_agi] = current_user.hero.agi
@@ -41,6 +51,10 @@ class HerosController < ApplicationController
 		cookies[:hero_wis] = current_user.hero.wis
 		cookies[:hero_exp] = current_user.hero.exp
 		cookies[:hero_lvl] = current_user.hero.level
-
   end
+
+  def hero_params
+  	params.permit(:level)
+  end
+
 end

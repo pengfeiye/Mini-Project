@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	get "/signup", to: "users#new"
 	post "/signup", to: "users#create"
 	get "/show", to: "users#show", as: "show_user"
+	get "/this/is/very/private", to: "users#current_user", as:"current_user"
 
 	get "/login", to: "sessions#new"
 	post "/login", to: "sessions#create"

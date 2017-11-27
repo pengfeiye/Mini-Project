@@ -18,6 +18,10 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def current_user
+		render json: {name: current_user}
+	end
+
 
 
 end

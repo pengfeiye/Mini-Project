@@ -4,6 +4,11 @@ module SessionsHelper
     @current_user = user
   end
 
+  def logout
+    session[:user_id] = "none"
+    @current_user = false
+   end
+
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
   end

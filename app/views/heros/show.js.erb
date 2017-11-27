@@ -1,0 +1,12 @@
+$(document).on('turbolinks:load', function(){
+	alert("adf")
+	console.log("dddd")
+  $("#action-form").on('submit', function(e){
+    e.preventDefault()
+    console.log($(".form-control-plaintext").val())
+    if($(".form-control-plaintext").val() === 'move'){
+      console.log (<%=@hero.name%>)
+    }
+    $('#game-box').scrollTop($('#game-box')[0].scrollHeight);
+  })
+});

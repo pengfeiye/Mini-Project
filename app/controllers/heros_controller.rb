@@ -54,7 +54,7 @@ class HerosController < ApplicationController
   end
 
   def hero_params
-  	params.permit(:level)
+  	params.permit(:level, :exp, :atk, :def, :luk, :agi, :wis)
   end
 
 end

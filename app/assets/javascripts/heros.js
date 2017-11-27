@@ -3,8 +3,10 @@
 $(document).ready(function(){
   var currentMonster
   var heroTest = {}
-  
+
   cookieInit();
+  var levelExp = (heroTest.hero_lvl * 1.5) * 50 + 100
+  var heroHP = heroTest.hero_def * 50
   console.log(heroTest)
   $("#action-form").on('submit', function(e){
     e.preventDefault()
@@ -49,7 +51,12 @@ else{
   currentMonster.hp -= (heroTest.hero_atk - currentMonster.def * 1.5);
   if(currentMonster.hp<=0){
     storyLine(`You have killed the monster`)
-    heroTest.hero_exp += 30
+    heroTest.hero_exp += 10
+    console.log(levelExp)
+    if(heroTest.hero_exp >= levelExp){
+      levelUp()
+      storyLine(`You have level up! Current level: ${heroTest.hero_lvl} !`)
+    }
     currentMonster = false
     console.log(heroTest)
     //
@@ -58,7 +65,7 @@ else{
                 // contentType: "application/json; charset=utf-8",
                 url: `/hero/${heroTest.hero_id}`,
                 //data: "{'data1':'" + value1+ "', 'data2':'" + value2+ "', 'data3':'" + value3+ "'}",
-                data: {level: heroTest.hero_lvl+1},
+                data: {exp: heroTest.hero_exp, level: heroTest.hero_lvl, atk: heroTest.hero_atk, def: heroTest.hero_def, agi: heroTest.hero_agi, luk: heroTest.hero_luk, wis: heroTest.hero_wis},
                 dataType: "json",
                 success: function (result) {
                 //do somthing here
@@ -83,6 +90,16 @@ function move() {
   storyLine(`Monster hp: ${currentMonster.hp}`)
 }
 
+function levelUp(){
+  heroTest.hero_lvl += 1
+  heroTest.hero_atk = heroTest.hero_atk + (heroTest.hero_atk * 1/3)
+  heroTest.hero_def = heroTest.hero_def + (heroTest.hero_def * 1/3)
+  heroTest.hero_agi = heroTest.hero_agi + (heroTest.hero_agi * 1/3)
+  heroTest.hero_luk = heroTest.hero_luk + (heroTest.hero_luk * 1/3)
+  heroTest.hero_wis = heroTest.hero_wis + (heroTest.hero_wis * 1/3)
+
+}
+
 class Monster {
   constructor(name, hp, def, atk){
     this.name = name;
@@ -91,5 +108,9 @@ class Monster {
     this.atk = atk;
   }
 }
+
+
+
+
 
 });

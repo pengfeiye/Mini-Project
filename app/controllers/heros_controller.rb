@@ -42,7 +42,7 @@ class HerosController < ApplicationController
 
 	private
 	def set_user
-		cookies.delete :user
+		# cookies.delete :user
     cookies[:hero_id] = current_user.hero.id
 		cookies[:hero_atk] = current_user.hero.atk
 		cookies[:hero_def] = current_user.hero.def

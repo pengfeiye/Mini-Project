@@ -1,11 +1,18 @@
 body {
-	background-color: skyblue;
+	background-color: black;
+	background-image: url("wooden-desk.jpeg");
+	font-family: 'Oregano', cursive;
+	font-size: 20px;
+	color: white;
 }
 
 h1 {
-	font-family: 'Oregano', cursive;
 	text-align: center;
 	font-size: 70px;
+}
+
+form {
+	color: black;
 }
 
 #homepage-container {
@@ -15,7 +22,13 @@ h1 {
 #game-box {
 	height: 60vh;
 	background-color: lightgrey;
+	background-image: url("old-paper.jpeg");
+	background-size: cover;
 	overflow-y: scroll;
+	/*color: #ecf0ff;*/
+	color: black;
+	font-size: 28px;
+	margin-bottom: 10px;
 }
 
 #game-content {
